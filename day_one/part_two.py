@@ -3,7 +3,7 @@ def check_bulk_measurement_increases():
     increase_count = 0
     
     # Populate depth_measurement_increases
-    with open("day_one/input.py") as f:
+    with open("day_one/input.txt") as f:
         lines = f.readlines()
         for measure in lines:
             m = int(measure.replace('\n', ''))
