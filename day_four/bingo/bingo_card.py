@@ -4,9 +4,20 @@ NUM = 'num'
 MARKED = 'marked'
 ROW_COUNT = 5
 
+ROW = 'ROW'
+B = 'B'
+I ='I'
+N = 'N'
+G = 'G'
+O = 'O'
+COLUMN = 'COLUMN'
+TOP_LEFT = 'TOP-LEFT'
+TOP_RIGHT = 'TOP-RIGHT'
+DIAGONAL = 'DIAGONAL'
+
 class BingoCard:
 
-    def __init__(self, rows):
+    def __init__(self, rows, id):
         if not self.__is_list(rows):
             raise AttributeError(ROW_ERROR)
 
@@ -20,9 +31,11 @@ class BingoCard:
             if len(row) != ROW_COUNT:
                 raise AttributeError(ROW_COUNT_ERROR)
         
+        self.id = id
         self.__fill_rows(rows)
         self.__heard_numbers = []
         self.__is_winning_card = False
+        self.__win_styles = None
 
     def print_card(self):
         print(' B | I | N | G | O')
@@ -31,6 +44,9 @@ class BingoCard:
         print(f" {self.__rows[2][0][NUM]} {self.__rows[2][0][MARKED]} | {self.__rows[2][1][NUM]} {self.__rows[2][1][MARKED]} | {self.__rows[2][2][NUM]} {self.__rows[2][2][MARKED]} | {self.__rows[2][3][NUM]} {self.__rows[2][3][MARKED]} | {self.__rows[2][4][NUM]} {self.__rows[2][4][MARKED]} |")
         print(f" {self.__rows[3][0][NUM]} {self.__rows[3][0][MARKED]} | {self.__rows[3][1][NUM]} {self.__rows[3][1][MARKED]} | {self.__rows[3][2][NUM]} {self.__rows[3][2][MARKED]} | {self.__rows[3][3][NUM]} {self.__rows[3][3][MARKED]} | {self.__rows[3][4][NUM]} {self.__rows[3][4][MARKED]} |")
         print(f" {self.__rows[4][0][NUM]} {self.__rows[4][0][MARKED]} | {self.__rows[4][1][NUM]} {self.__rows[4][1][MARKED]} | {self.__rows[4][2][NUM]} {self.__rows[4][2][MARKED]} | {self.__rows[4][3][NUM]} {self.__rows[4][3][MARKED]} | {self.__rows[4][4][NUM]} {self.__rows[4][4][MARKED]} |")
+
+    def get_win_styles(self):
+        return self.__win_styles
 
     def is_winning_card(self):
         return self.__is_winning_card
@@ -77,7 +93,7 @@ class BingoCard:
         return self.__heard_numbers
 
     def get_last_heard_number(self):
-        return self.__heard_numbers
+        return self.__heard_numbers[-1]
 
     def respond_to_number(self, heard_number):
         self.__heard_numbers.append(heard_number)
@@ -90,12 +106,28 @@ class BingoCard:
 
         self.__check_wins()
 
+    def get_score(self):
+        if not self.__is_winning_card:
+            return 0
+
+        multiplier = self.get_last_heard_number()
+
+        total_sum = 0
+
+        for row in self.__rows:
+            for marker in row:
+                if not marker[MARKED]:
+                    total_sum += marker[NUM]
+        
+        return total_sum * multiplier
+
     def __check_wins(self):
         for i in range(ROW_COUNT):
             row = self.get_row(i)
 
             if self.__check_win(row):
                 self.__set_win()
+                self.__set_win_style(ROW, i)
 
         b_column = self.get_b_column()
         i_column = self.get_i_column()
@@ -104,31 +136,42 @@ class BingoCard:
         o_column = self.get_o_column()
 
         if self.__check_win(b_column):
+            self.__set_win_style(COLUMN, B)
             self.__set_win()
 
         if self.__check_win(i_column):
+            self.__set_win_style(COLUMN, I)
             self.__set_win()
 
         if self.__check_win(n_column):
+            self.__set_win_style(COLUMN, G)
             self.__set_win()
 
         if self.__check_win(g_column):
+            self.__set_win_style(COLUMN, G)
             self.__set_win()
 
         if self.__check_win(o_column):
+            self.__set_win_style(COLUMN, O)
             self.__set_win()
 
         top_left_diagonal = self.get_top_left_diagonal()
         if self.__check_win(top_left_diagonal):
             self.__set_win()
+            self.__set_win_style(DIAGONAL, TOP_LEFT)
 
         top_right_diagonal = self.get_top_right_diagonal()
         if self.__check_win(top_right_diagonal):
             self.__set_win()
+            self.__set_win_style(DIAGONAL, TOP_RIGHT)
 
+    def __set_win_style(self, style, postion):
+        if self.__win_styles:
+            self.__win_styles = { **self.__win_styles, style: postion }
+        else:
+            self.__win_styles = { style: postion }
 
     def __check_win(self, line):
-        print(line)
         marks = 0
         for marker in line:
             if marker[MARKED]:
