@@ -39,7 +39,6 @@ def get_life_support_rating():
             input_list.append(byte_str.replace('\n', ''))
     
     length_limit = len(input_list)
-    # print(analyze_binary_list(input_list, 0))
 
     # Calculate O2 rating
     oxygen_rating_list = list(input_list)
