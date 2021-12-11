@@ -69,25 +69,25 @@ class BingoCard:
     def get_o_column(self):
         return self.__get_column(4)
     
-    def get_top_left_diagonal(self):
-        diagonal = []
-        column_num = 0
+    # def get_top_left_diagonal(self):
+    #     diagonal = []
+    #     column_num = 0
 
-        for row in self.__rows:
-            diagonal.append(row[column_num])
-            column_num += 1
+    #     for row in self.__rows:
+    #         diagonal.append(row[column_num])
+    #         column_num += 1
 
-        return diagonal
+    #     return diagonal
     
-    def get_top_right_diagonal(self):
-        diagonal = []
-        column_num = 4
+    # def get_top_right_diagonal(self):
+    #     diagonal = []
+    #     column_num = 4
 
-        for row in self.__rows:
-            diagonal.append(row[column_num])
-            column_num -= 1
+    #     for row in self.__rows:
+    #         diagonal.append(row[column_num])
+    #         column_num -= 1
 
-        return diagonal
+    #     return diagonal
 
     def get_heard_numbers(self):
         return self.__heard_numbers
@@ -155,15 +155,15 @@ class BingoCard:
             self.__set_win_style(COLUMN, O)
             self.__set_win()
 
-        top_left_diagonal = self.get_top_left_diagonal()
-        if self.__check_win(top_left_diagonal):
-            self.__set_win()
-            self.__set_win_style(DIAGONAL, TOP_LEFT)
+        # top_left_diagonal = self.get_top_left_diagonal()
+        # if self.__check_win(top_left_diagonal):
+        #     self.__set_win()
+        #     self.__set_win_style(DIAGONAL, TOP_LEFT)
 
-        top_right_diagonal = self.get_top_right_diagonal()
-        if self.__check_win(top_right_diagonal):
-            self.__set_win()
-            self.__set_win_style(DIAGONAL, TOP_RIGHT)
+        # top_right_diagonal = self.get_top_right_diagonal()
+        # if self.__check_win(top_right_diagonal):
+        #     self.__set_win()
+        #     self.__set_win_style(DIAGONAL, TOP_RIGHT)
 
     def __set_win_style(self, style, postion):
         if self.__win_styles:
