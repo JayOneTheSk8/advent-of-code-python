@@ -7,6 +7,17 @@ class Octomap():
         self.__exclude_pos = []
         self.__flash_count = 0
 
+    def are_all_flashing(self):
+        all_flashing = True
+
+        for octopus_row in self.__octomap:
+            for octopus in octopus_row:
+                if octopus[ENERGY_LEVEL] != 0:
+                    all_flashing = False
+                    break
+
+        return all_flashing
+
     def get_flash_count(self):
         return self.__flash_count
 
