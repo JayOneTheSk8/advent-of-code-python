@@ -7,7 +7,7 @@ UP = 'up'
 def handle_accurate_diving_input():
     movement_inputs = []
 
-    with open("day_two/input.txt") as f:
+    with open("day_2/input.txt") as f:
         lines = f.readlines()
         for movement in lines:
             mvmt = movement.replace('\n', '')

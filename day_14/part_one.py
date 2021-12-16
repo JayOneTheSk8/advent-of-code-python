@@ -5,7 +5,7 @@ def grow_polymer():
     rules = {}
     base_string = ''
 
-    with open('day_fourteen/input.txt') as f:
+    with open('day_14/input.txt') as f:
         lines = f.read().splitlines()
         for idx, line in enumerate(lines, start=0):
             if len(line.strip()) < 1:

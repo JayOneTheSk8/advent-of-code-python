@@ -32,7 +32,7 @@ def get_life_support_rating():
     
     input_list = []
 
-    with open("day_three/input.txt") as f:
+    with open("day_3/input.txt") as f:
         lines = f.readlines()
 
         for byte_str in lines:

@@ -3,7 +3,7 @@ from vent_manager.vent_grid import VentGrid
 def get_overlapping_lines():
     line_segments = []
 
-    with open('day_five/input.txt') as f:
+    with open('day_5/input.txt') as f:
         lines = f.read().splitlines()
         for s in lines:
             line_segment = []

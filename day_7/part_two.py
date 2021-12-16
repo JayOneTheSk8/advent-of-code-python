@@ -36,7 +36,7 @@ def get_most_fuel_efficient_position(arr, lowest_num, highest_num):
 def get_fuel_input():
     positions = []
 
-    with open('day_seven/input.txt') as f:
+    with open('day_7/input.txt') as f:
         positions += [int(p) for p in f.readline().split(',')]
 
     positions.sort()

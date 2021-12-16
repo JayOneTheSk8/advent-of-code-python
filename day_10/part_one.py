@@ -71,7 +71,7 @@ def find_paren_syntax_error(paren_str):
 def get_nav_system_syntax_errors():
     nav_subsystem = []
 
-    with open('day_ten/input.txt') as f:
+    with open('day_10/input.txt') as f:
         nav_subsystem += f.read().splitlines()
     
     final_score = 0

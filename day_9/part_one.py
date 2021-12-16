@@ -4,7 +4,7 @@ def get_risk_assertion():
 
     number_map = []
 
-    with open('day_nine/input.txt') as f:
+    with open('day_9/input.txt') as f:
         number_map += f.read().splitlines()
     
     height_mapper = HeightMapper(number_map=number_map)

@@ -6,7 +6,7 @@ def fold_paper():
     width = 0
     height = 0
 
-    with open('day_thirteen/input.txt') as f:
+    with open('day_13/input.txt') as f:
         lines = f.read().splitlines()
 
         for line in lines:

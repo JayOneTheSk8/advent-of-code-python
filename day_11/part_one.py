@@ -3,7 +3,7 @@ from map.octomap import Octomap
 def flash_octomap():
     number_map = []
     
-    with open('day_eleven/input.txt') as f:
+    with open('day_11/input.txt') as f:
         lines = f.read().splitlines()
         for line in lines:
             number_map.append([int(num_str) for num_str in line])

@@ -4,7 +4,7 @@ OUTPUTS = 'outputs'
 def get_available_signal_output_values():
     signals = []
 
-    with open('day_eight/input.txt') as f:
+    with open('day_8/input.txt') as f:
         lines = f.read().splitlines()
         delimeter = ' | '
 

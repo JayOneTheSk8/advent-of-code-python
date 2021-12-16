@@ -5,7 +5,7 @@ DAY_COUNT = 80
 def count_laternfish():
     lanternfish = []
 
-    with open('day_six/input.txt') as f:
+    with open('day_6/input.txt') as f:
         lanternfish = [LanternFish(internal_timer=int(fish)) for fish in f.readline().split(',')]
     
     spawn_count = len(lanternfish)

@@ -3,7 +3,7 @@ from nodes.cave_node import CaveNode, START, END
 def find_all_paths():
     cave_nodes = {}
 
-    with open('day_twelve/input.txt') as f:
+    with open('day_12/input.txt') as f:
         lines = f.read().splitlines()
 
         for connection in lines:

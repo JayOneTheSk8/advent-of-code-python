@@ -16,7 +16,7 @@ def convert_binary_string_to_decimal(binary_str):
 def calculate_power_consumption():
     counts = {}
 
-    with open("day_three/input.txt") as f:
+    with open("day_3/input.txt") as f:
         lines = f.readlines()
         for bin in lines:
             binary_str = bin.replace('\n', '')

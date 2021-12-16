@@ -5,7 +5,7 @@ def play_bingo():
     bingo_cards = {}
     cards_in_play = set()
 
-    with open('day_four/input.txt') as f:
+    with open('day_4/input.txt') as f:
         lines = f.readlines()
 
         parsed_lines = []
