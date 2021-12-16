@@ -48,19 +48,19 @@ def find_paren_syntax_error(paren_str):
                 else:
                     return scores[paren]
 
-            if paren == CLOSE_BRACE:
+            elif paren == CLOSE_BRACE:
                 if parens[-1] == OPEN_BRACE:
                     parens.pop()
                 else:
                     return scores[paren]
                 
-            if paren == CLOSE_BRACKET:
+            elif paren == CLOSE_BRACKET:
                 if parens[-1] == OPEN_BRACKET:
                     parens.pop()
                 else:
                     return scores[paren]
                 
-            if paren == CLOSE_ANGLE_BRACKET:
+            elif paren == CLOSE_ANGLE_BRACKET:
                 if parens[-1] == OPEN_ANGLE_BRACKET:
                     parens.pop()
                 else:
