@@ -31,7 +31,7 @@ def find_all_paths():
             cave_nodes[first_node.id] = first_node
             cave_nodes[second_node.id] = second_node
 
-    paths = cave_nodes[START].paths()
+    paths = cave_nodes[START].get_paths_visiting_small_caves_twice()
 
     return len(paths)
 
